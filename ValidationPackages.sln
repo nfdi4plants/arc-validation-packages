@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "ValidationPackages.Tests", "tests\ValidationPackages.Tests.fsproj", "{D9970D1D-9603-4C7A-9252-6A56CBE21062}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sln", "sln", "{55422101-E1FF-4846-B42C-445298D60D5C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		global.json = global.json
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9970D1D-9603-4C7A-9252-6A56CBE21062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9970D1D-9603-4C7A-9252-6A56CBE21062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9970D1D-9603-4C7A-9252-6A56CBE21062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9970D1D-9603-4C7A-9252-6A56CBE21062}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {761E9831-7AB0-48D9-B549-413DD7A390FF}
+	EndGlobalSection
+EndGlobal
