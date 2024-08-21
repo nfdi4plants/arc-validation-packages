@@ -1,0 +1,42 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+# this ensures that tests are run when adding new tests or packages
+      - 'tests/**'
+      - 'validation_packages/**'
+      - '.github/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+# here, also run tests when a pr targets source files
+      - 'tests/**'
+      - 'validation_packages/**'
+      - '.github/**'
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.x.x
+    - name: test
+      working-directory: ./
+      run: dotnet test
+
+  test-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.x.x
+    - name: test
+      working-directory: ./
+      run: dotnet test

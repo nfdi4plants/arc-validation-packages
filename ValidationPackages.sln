@@ -13,6 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sln", "sln", "{55422101-E1F
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".ci", ".ci", "{8CF8F7A6-E0A5-4B72-8FEF-52084354A4CF}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\manage-issues.yml = .github\workflows\manage-issues.yml
+		.github\workflows\run-tests.yml = .github\workflows\run-tests.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
