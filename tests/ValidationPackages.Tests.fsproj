@@ -10,11 +10,16 @@
   <ItemGroup>
     <None Include="fixtures\**" CopyToOutputDirectory="Always" />
     <Content Include="..\validation_packages\**" CopyToOutputDirectory="Always" LinkBase="validation_packages" />
+    <Compile Include="TestUtils.fs" />
+    <Compile Include="ReferenceObjects.fs" />
+    <Compile Include="TestObjects.fs" />
+    <Compile Include="GitSubmodulesTests.fs" />
     <Compile Include="Tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fake.Core.Process" Version="6.0.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="xunit" Version="2.5.3" />

@@ -17,26 +17,10 @@ on:
       - '.github/**'
 
 jobs:
-  test-linux:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.x.x
-    - name: test
-      working-directory: ./
-      run: dotnet test
-
-  test-windows:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.x.x
-    - name: test
-      working-directory: ./
-      run: dotnet test
+  build-and-test:
+    name: "Build and test"
+    uses: nfdi4plants/actions-workflows/.github/workflows/build-and-test-solution.yml@main
+    with:
+      solution: ./arc-validation-packages.sln
+      checkout-submodules: true
+      configuration: Release
