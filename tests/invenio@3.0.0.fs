@@ -4,6 +4,8 @@
 open System.IO
 open Xunit
 open ARCTokenization
+open ControlledVocabulary
+open System
 
 
 let arcDir = Path.Combine(__SOURCE_DIRECTORY__, "fixtures", "ArcPrototype")
@@ -15,16 +17,28 @@ let investigationMetadata =
     |> Investigation.parseMetadataSheetsFromTokens() arcDir 
     |> List.concat 
 
+// Investigation has title
+let expectedTitleCvPExists =
+    investigationMetadata 
+    |> List.exists (
+        fun ip -> 
+            Param.getCvAccession ip = "INVMSO:00000009" && 
+            Param.getValueAsString ip |> String.IsNullOrWhiteSpace |> not && 
+            match Param.getParamValue ip with | CvValue x -> x.Accession = "AGMO:00000001" | _ -> false
+    )
+
+Assert.True expectedTitleCvPExists
+
 
 // Validation Cases:
 let cases = 
     testList INVMSO.``Investigation Metadata``.INVESTIGATION.key.Name [
-        // Investigation has title
-        ARCExpect.validationCase (TestID.Name INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``.Name) {
-            investigationMetadata
-            |> Validate.ParamCollection.ContainsNonKeyParamWithTerm
-                INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``
-        }
+        //// Investigation has title
+        //ARCExpect.validationCase (TestID.Name INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``.Name) {
+        //    investigationMetadata
+        //    |> Validate.ParamCollection.ContainsNonKeyParamWithTerm
+        //        INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``
+        //}
         // Investigation has description
         ARCExpect.validationCase (TestID.Name INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Description``.Name) {
             investigationMetadata
