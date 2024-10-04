@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -14,7 +14,6 @@
     <Compile Include="ReferenceObjects.fs" />
     <Compile Include="TestObjects.fs" />
     <Compile Include="GitSubmodulesTests.fs" />
-    <Compile Include="Tests.fs" />
     <Compile Include="invenio%403.0.0.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
