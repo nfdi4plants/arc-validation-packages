@@ -35,14 +35,33 @@ open ValidationPackages.Tests
 //Assert.True expectedTitleCvPExists
 
 
-[<Fact>]
-let ``result Exitcode is 0`` () =
-    let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/ArcPrototype"
+module ArcPrototype =
 
-    Assert.Equal(0, result.ExitCode)
+    [<Fact>]
+    let ``result Exitcode is 0`` () =
+        let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/ArcPrototype"
 
-[<Fact>]
-let ``validation_summary.json is equal`` () =
-    let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/ArcPrototype/.arc-validate-results/invenio@3.0.0/validation_summary.json")
-    Assert.Equal(ReferenceObjects.invenio.validationResultCritical, arcExpectValidationResult.Critical)
-    Assert.Equal(ReferenceObjects.invenio.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+        Assert.Equal(0, result.ExitCode)
+
+    [<Fact>]
+    let ``validation_summary.json is equal`` () =
+        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/ArcPrototype/.arc-validate-results/invenio@3.0.0/validation_summary.json")
+        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultCritical, arcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+
+
+module testARC_emptyContacts =
+
+    [<Fact>]
+    let ``result Exitcode is 1`` =
+        let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_emptyContactsColumn"
+        Assert.Equal(1, result.ExitCode)
+
+    [<Fact>]
+    let ``validation_summary.json is equal`` () =
+        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_emptyContacts/.arc-validate-results/invenio@3.0.0/validation_summary.json")
+        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContacts.validationResultCritical, arcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContacts.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+
+
+module testARC_empty

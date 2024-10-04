@@ -12,8 +12,19 @@ module General =
 
 module invenio =
 
-    let validationResultCritical =
-        ValidationResult.create(10,10,0,0)
+    module ArcPrototype =
 
-    let validationResultNonCritical =
-        ValidationResult.create(0,0,0,0)
+        let validationResultCritical =
+            ValidationResult.create(10,10,0,0)
+
+        let validationResultNonCritical =
+            ValidationResult.create(0,0,0,0)
+
+
+    module testARC_emptyContacts =
+
+        let validationResultCritical =
+            ValidationResult.create(10,4,6,0)
+
+        let validationResultNonCritical =
+            ValidationResult.create(0,0,0,0)
