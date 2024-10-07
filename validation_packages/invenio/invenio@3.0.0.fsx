@@ -40,7 +40,6 @@ open System.IO
 
 // Input:
 let arcDir = Directory.GetCurrentDirectory()
-//let arcDir = @"C:\Repos\nfdi4plants\arc-validation-packages\tests\fixtures\ArcPrototype\"
 
 // Values:
 let absoluteDirectoryPaths = FileSystem.parseARCFileSystem arcDir
