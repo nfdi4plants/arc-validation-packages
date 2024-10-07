@@ -21,10 +21,46 @@ module invenio =
             ValidationResult.create(0,0,0,0)
 
 
-    module testARC_emptyContacts =
+    module testARC_empty =
 
         let validationResultCritical =
             ValidationResult.create(10,4,6,0)
+
+        let validationResultNonCritical =
+            ValidationResult.create(0,0,0,0)
+
+
+    module testARC_emptyContactsColumn =
+
+        let validationResultCritical =
+            ValidationResult.create(10,6,4,0)
+
+        let validationResultNonCritical =
+            ValidationResult.create(0,0,0,0)
+
+
+    module testARC_shiftedContactsCells =
+
+        let validationResultCritical =
+            ValidationResult.create(10,9,1,0)
+
+        let validationResultNonCritical =
+            ValidationResult.create(0,0,0,0)
+
+
+    module testARC_shiftedTitleCell =
+
+        let validationResultCritical =
+            ValidationResult.create(10,10,0,0)
+
+        let validationResultNonCritical =
+            ValidationResult.create(0,0,0,0)
+
+
+    module testARC_wrongEmail =
+
+        let validationResultCritical =
+            ValidationResult.create(10,9,1,0)
 
         let validationResultNonCritical =
             ValidationResult.create(0,0,0,0)
