@@ -1,16 +1,13 @@
 ﻿module invenio
 
 
-open System.IO
-open Xunit
-open ARCTokenization
-open ControlledVocabulary
-open System
-open Fake.DotNet
-open TestUtils
-open ARCExpect
-open System.Text.Json
 open ValidationPackages.Tests
+open TestUtils
+
+open Xunit
+open ARCExpect
+
+open System.IO
 
 
 //let arcDir = Path.Combine(__SOURCE_DIRECTORY__, "fixtures", "ArcPrototype")
@@ -44,6 +41,9 @@ module ArcPrototype =
 
     [<Fact>]
     let ``validation_summary JSON is equal`` () =
+        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
+        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/ArcPrototype" |> ignore
+
         let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/ArcPrototype/.arc-validate-results/invenio@3.0.0/validation_summary.json")
         Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultCritical, arcExpectValidationResult.Critical)
         Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, arcExpectValidationResult.NonCritical)
@@ -58,6 +58,9 @@ module testARC_empty =
 
     [<Fact>]
     let ``validation_summary JSON is equala`` () =
+        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
+        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/ArcPrototype" |> ignore
+
         let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_empty/.arc-validate-results/invenio@3.0.0/validation_summary.json")
         Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultCritical, arcExpectValidationResult.Critical)
         Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultNonCritical, arcExpectValidationResult.NonCritical)
@@ -72,6 +75,9 @@ module testARC_emptyContactsColumn =
 
     [<Fact>]
     let ``validation_summary JSON is equal`` () =
+        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
+        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_emptyContactsColumn" |> ignore
+
         let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_emptyContactsColumn/.arc-validate-results/invenio@3.0.0/validation_summary.json")
         Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultCritical, arcExpectValidationResult.Critical)
         Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultNonCritical, arcExpectValidationResult.NonCritical)
@@ -86,6 +92,9 @@ module shiftedContactsCells =
 
     [<Fact>]
     let ``validation_summary JSON is equal`` () =
+        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
+        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_shiftedContactsCells" |> ignore
+
         let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_shiftedContactsCells/.arc-validate-results/invenio@3.0.0/validation_summary.json")
         Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultCritical, arcExpectValidationResult.Critical)
         Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultNonCritical, arcExpectValidationResult.NonCritical)
@@ -100,6 +109,9 @@ module shiftedTitleCell =
 
     [<Fact>]
     let ``validation_summary JSON is equal`` () =
+        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
+        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_shiftedTitleCell" |> ignore
+
         let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_shiftedTitleCell/.arc-validate-results/invenio@3.0.0/validation_summary.json")
         Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultCritical, arcExpectValidationResult.Critical)
         Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultNonCritical, arcExpectValidationResult.NonCritical)
@@ -114,6 +126,9 @@ module wrongEmail =
 
     [<Fact>]
     let ``validation_summary JSON is equal`` () =
+        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
+        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_wrongEmail" |> ignore
+
         let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_wrongEmail/.arc-validate-results/invenio@3.0.0/validation_summary.json")
         Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultCritical, arcExpectValidationResult.Critical)
         Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultNonCritical, arcExpectValidationResult.NonCritical)
