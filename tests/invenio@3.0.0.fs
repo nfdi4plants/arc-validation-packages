@@ -35,15 +35,17 @@ open System
 
 type BaseTool_Fixture(scriptName : string, version : string, arcfolder : string) =
 
+    let result = runTool "dotnet" [|"fsi"; $"../../validation_packages/{scriptName}/{scriptName}@{version}.fsx"|] $"fixtures/{arcfolder}"
+
+    let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText $"fixtures/{arcfolder}/.arc-validate-results/{scriptName}@{version}/validation_summary.json")
+
     interface IDisposable with
         override this.Dispose() =
             Directory.Delete($"fixtures/{arcfolder}/.arc-validate-results/{scriptName}@{version}/", true)
 
-    member this.Result = 
-        runTool "dotnet" [|"fsi"; $"../../validation_packages/{scriptName}/{scriptName}@{version}.fsx"|] $"fixtures/{arcfolder}"
+    member this.Result = result
 
-    member this.ArcExpectValidationResult = 
-        ARCExpect.ValidationSummary.fromJson (File.ReadAllText $"fixtures/{arcfolder}/.arc-validate-results/{scriptName}@{version}/validation_summary.json")
+    member this.ArcExpectValidationResult = arcExpectValidationResult
 
 
 type ArcPrototype_Fixture() =
