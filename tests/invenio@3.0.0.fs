@@ -33,28 +33,40 @@ open System
 //Assert.True expectedTitleCvPExists
 
 
-type ArcPrototype() =
-
-    let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/ArcPrototype"
+type BaseTool_Fixture(scriptName : string, version : string, arcfolder : string) =
 
     interface IDisposable with
         override this.Dispose() =
-            Directory.Delete("fixtures/ArcPrototype/.arc-validate-results/invenio@3.0.0/", true)
+            Directory.Delete($"fixtures/{arcfolder}/.arc-validate-results/{scriptName}@{version}/", true)
 
-    member this.Result with get() = result
+    member this.Result = 
+        runTool "dotnet" [|"fsi"; $"../../validation_packages/{scriptName}/{scriptName}@{version}.fsx"|] $"fixtures/{arcfolder}"
+
+    member this.ArcExpectValidationResult = 
+        ARCExpect.ValidationSummary.fromJson (File.ReadAllText $"fixtures/{arcfolder}/.arc-validate-results/{scriptName}@{version}/validation_summary.json")
+
+
+type ArcPrototype_Fixture() =
+
+    inherit BaseTool_Fixture("invenio", "3.0.0", "ArcPrototype")
+
+
+type ArcPrototype() =
+
+    let tool_fixture = new ArcPrototype_Fixture()
+
+    interface IClassFixture<ArcPrototype_Fixture>
+
+    member this.Fixture with get() = tool_fixture
 
     [<Fact>]
     member this.``result Exitcode is 0`` () =
-        Assert.Equal(0, this.Result.ExitCode)
+        Assert.Equal(0, this.Fixture.Result.ExitCode)
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
-        //runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/ArcPrototype" |> ignore
-
-        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/ArcPrototype/.arc-validate-results/invenio@3.0.0/validation_summary.json")
-        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultCritical, arcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
 
 //type testARC_empty =
