@@ -71,94 +71,116 @@ type ArcPrototype() =
         Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
 
-//type testARC_empty =
+type testARC_empty_Fixture() =
 
-//    interface IDisposable with
-//        override this.Dispose() =
-//            ()
-
-//    [<Fact>]
-//    static member ``result Exitcode is 0`` () =
-//        let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_empty"
-//        Assert.Equal(0, result.ExitCode)
-
-//    [<Fact>]
-//    static member ``validation_summary JSON is equala`` () =
-//        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
-//        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/ArcPrototype" |> ignore
-
-//        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_empty/.arc-validate-results/invenio@3.0.0/validation_summary.json")
-//        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultCritical, arcExpectValidationResult.Critical)
-//        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_empty")
 
 
-//type testARC_emptyContactsColumn =
+type testARC_empty() =
 
-//    interface IDisposable with
-//        override this.Dispose() =
-//            ()
+    let tool_fixture = new testARC_empty_Fixture()
 
-//    [<Fact>]
-//    static member ``result Exitcode is 0`` () =
-//        let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_emptyContactsColumn"
-//        Assert.Equal(0, result.ExitCode)
+    interface IClassFixture<testARC_empty_Fixture>
 
-//    [<Fact>]
-//    static member ``validation_summary JSON is equal`` () =
-//        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
-//        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_emptyContactsColumn" |> ignore
+    member this.Fixture with get() = tool_fixture
 
-//        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_emptyContactsColumn/.arc-validate-results/invenio@3.0.0/validation_summary.json")
-//        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultCritical, arcExpectValidationResult.Critical)
-//        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+    [<Fact>]
+    member this.``result Exitcode is 0`` () =
+        Assert.Equal(0, this.Fixture.Result.ExitCode)
+
+    [<Fact>]
+    member this.``validation_summary JSON is equal`` () =
+        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
 
-//type shiftedContactsCells =
+type testARC_emptyContactsColumn_Fixture() =
 
-//    [<Fact>]
-//    static member ``result Exitcode is 0`` () =
-//        let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_shiftedContactsCells"
-//        Assert.Equal(0, result.ExitCode)
-
-//    [<Fact>]
-//    static member ``validation_summary JSON is equal`` () =
-//        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
-//        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_shiftedContactsCells" |> ignore
-
-//        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_shiftedContactsCells/.arc-validate-results/invenio@3.0.0/validation_summary.json")
-//        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultCritical, arcExpectValidationResult.Critical)
-//        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_emptyContactsColumn")
 
 
-//type shiftedTitleCell =
+type testARC_emptyContactsColumn() =
 
-//    [<Fact>]
-//    static member ``result Exitcode is 0`` () =
-//        let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_shiftedTitleCell"
-//        Assert.Equal(0, result.ExitCode)
+    let tool_fixture = new testARC_emptyContactsColumn_Fixture()
 
-//    [<Fact>]
-//    static member ``validation_summary JSON is equal`` () =
-//        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
-//        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_shiftedTitleCell" |> ignore
+    interface IClassFixture<testARC_emptyContactsColumn_Fixture>
 
-//        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_shiftedTitleCell/.arc-validate-results/invenio@3.0.0/validation_summary.json")
-//        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultCritical, arcExpectValidationResult.Critical)
-//        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+    member this.Fixture with get() = tool_fixture
+
+    [<Fact>]
+    member this.``result Exitcode is 0`` () =
+        Assert.Equal(0, this.Fixture.Result.ExitCode)
+
+    [<Fact>]
+    member this.``validation_summary JSON is equal`` () =
+        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
 
-//type wrongEmail =
+type testARC_shiftedContactsCells_Fixture() =
 
-//    [<Fact>]
-//    static member ``result Exitcode is 0`` () =
-//        let result = runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_wrongEmail"
-//        Assert.Equal(0, result.ExitCode)
+    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_shiftedContactsCells")
 
-//    [<Fact>]
-//    static member ``validation_summary JSON is equal`` () =
-//        // this is needed due to the unordered sequencing and partial parallelism xUnit works with. Otherwise it is not ensured that the necessary summary file is present.
-//        runTool "dotnet" [|"fsi"; "../../validation_packages/invenio/invenio@3.0.0.fsx"|] "fixtures/testARC_wrongEmail" |> ignore
 
-//        let arcExpectValidationResult = ARCExpect.ValidationSummary.fromJson (File.ReadAllText "fixtures/testARC_wrongEmail/.arc-validate-results/invenio@3.0.0/validation_summary.json")
-//        Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultCritical, arcExpectValidationResult.Critical)
-//        Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultNonCritical, arcExpectValidationResult.NonCritical)
+type testARC_shiftedContactsCells() =
+
+    let tool_fixture = new testARC_shiftedContactsCells_Fixture()
+
+    interface IClassFixture<testARC_shiftedContactsCells_Fixture>
+
+    member this.Fixture with get() = tool_fixture
+
+    [<Fact>]
+    member this.``result Exitcode is 0`` () =
+        Assert.Equal(0, this.Fixture.Result.ExitCode)
+
+    [<Fact>]
+    member this.``validation_summary JSON is equal`` () =
+        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+
+
+type testARC_shiftedTitleCell_Fixture() =
+
+    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_shiftedTitleCell")
+
+
+type testARC_shiftedTitleCell() =
+
+    let tool_fixture = new testARC_shiftedTitleCell_Fixture()
+
+    interface IClassFixture<testARC_shiftedTitleCell_Fixture>
+
+    member this.Fixture with get() = tool_fixture
+
+    [<Fact>]
+    member this.``result Exitcode is 0`` () =
+        Assert.Equal(0, this.Fixture.Result.ExitCode)
+
+    [<Fact>]
+    member this.``validation_summary JSON is equal`` () =
+        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+
+
+type testARC_wrongEmail_Fixture() =
+
+    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_wrongEmail")
+
+
+type testARC_wrongEmail() =
+
+    let tool_fixture = new testARC_wrongEmail_Fixture()
+
+    interface IClassFixture<testARC_wrongEmail_Fixture>
+
+    member this.Fixture with get() = tool_fixture
+
+    [<Fact>]
+    member this.``result Exitcode is 0`` () =
+        Assert.Equal(0, this.Fixture.Result.ExitCode)
+
+    [<Fact>]
+    member this.``validation_summary JSON is equal`` () =
+        Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
