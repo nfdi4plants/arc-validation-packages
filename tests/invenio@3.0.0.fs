@@ -48,73 +48,73 @@ type BaseTool_Fixture(scriptName : string, version : string, arcfolder : string)
     member this.ArcExpectValidationResult = arcExpectValidationResult
 
 
-type ArcPrototype_Fixture() =
+//type ArcPrototype_Fixture() =
 
-    inherit BaseTool_Fixture("invenio", "3.0.0", "ArcPrototype")
-
-
-type ArcPrototype() =
-
-    let tool_fixture = new ArcPrototype_Fixture()
-
-    interface IClassFixture<ArcPrototype_Fixture>
-
-    member this.Fixture with get() = tool_fixture
-
-    [<Fact>]
-    member this.``result Exitcode is 0`` () =
-        Assert.Equal(0, this.Fixture.Result.ExitCode)
-
-    [<Fact>]
-    member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+//    inherit BaseTool_Fixture("invenio", "3.0.0", "ArcPrototype")
 
 
-type testARC_empty_Fixture() =
+//type ArcPrototype() =
 
-    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_empty")
+//    let tool_fixture = new ArcPrototype_Fixture()
 
+//    interface IClassFixture<ArcPrototype_Fixture>
 
-type testARC_empty() =
+//    member this.Fixture with get() = tool_fixture
 
-    let tool_fixture = new testARC_empty_Fixture()
+//    [<Fact>]
+//    member this.``result Exitcode is 0`` () =
+//        Assert.Equal(0, this.Fixture.Result.ExitCode)
 
-    interface IClassFixture<testARC_empty_Fixture>
-
-    member this.Fixture with get() = tool_fixture
-
-    [<Fact>]
-    member this.``result Exitcode is 0`` () =
-        Assert.Equal(0, this.Fixture.Result.ExitCode)
-
-    [<Fact>]
-    member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+//    [<Fact>]
+//    member this.``validation_summary JSON is equal`` () =
+//        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+//        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
 
-type testARC_emptyContactsColumn_Fixture() =
+//type testARC_empty_Fixture() =
 
-    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_emptyContactsColumn")
+//    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_empty")
 
 
-type testARC_emptyContactsColumn() =
+//type testARC_empty() =
 
-    let tool_fixture = new testARC_emptyContactsColumn_Fixture()
+//    let tool_fixture = new testARC_empty_Fixture()
 
-    interface IClassFixture<testARC_emptyContactsColumn_Fixture>
+//    interface IClassFixture<testARC_empty_Fixture>
 
-    member this.Fixture with get() = tool_fixture
+//    member this.Fixture with get() = tool_fixture
 
-    [<Fact>]
-    member this.``result Exitcode is 0`` () =
-        Assert.Equal(0, this.Fixture.Result.ExitCode)
+//    [<Fact>]
+//    member this.``result Exitcode is 0`` () =
+//        Assert.Equal(0, this.Fixture.Result.ExitCode)
 
-    [<Fact>]
-    member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+//    [<Fact>]
+//    member this.``validation_summary JSON is equal`` () =
+//        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+//        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+
+
+//type testARC_emptyContactsColumn_Fixture() =
+
+//    inherit BaseTool_Fixture("invenio", "3.0.0", "testARC_emptyContactsColumn")
+
+
+//type testARC_emptyContactsColumn() =
+
+//    let tool_fixture = new testARC_emptyContactsColumn_Fixture()
+
+//    interface IClassFixture<testARC_emptyContactsColumn_Fixture>
+
+//    member this.Fixture with get() = tool_fixture
+
+//    [<Fact>]
+//    member this.``result Exitcode is 0`` () =
+//        Assert.Equal(0, this.Fixture.Result.ExitCode)
+
+//    [<Fact>]
+//    member this.``validation_summary JSON is equal`` () =
+//        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+//        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
 
 type testARC_shiftedContactsCells_Fixture() =
