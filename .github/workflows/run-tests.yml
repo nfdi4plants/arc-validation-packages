@@ -29,6 +29,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.x.x
-    - name: Build and test
+    - name: Run integration test
       working-directory: ./
-      run: dotnet test 
+      run: dotnet test -v:normal
