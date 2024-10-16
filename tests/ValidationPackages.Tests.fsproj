@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="Always" />
     <None Include="fixtures\**" CopyToOutputDirectory="Always" />
     <Content Include="..\validation_packages\**" CopyToOutputDirectory="Always" LinkBase="validation_packages" />
     <Compile Include="TestUtils.fs" />
@@ -17,6 +18,8 @@
     <Compile Include="invenio%403.0.0.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
+
+  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="ARCExpect" Version="4.0.1" />
