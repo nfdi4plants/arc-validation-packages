@@ -39,7 +39,12 @@ type JUnitResults = {
     static member fromJUnitFile (path : string) =
         let doc = new XmlDocument()
         doc.Load(path)
-        let suite = doc.SelectNodes("/testsuites/testsuite[@name='arc-validate']").Item(0)
+        let suite = 
+            doc.SelectNodes("/testsuites/testsuite[@name='arc-validate']").Item(0)
+            |> fun r -> 
+                if isNull r then
+                    doc.SelectNodes("/testsuites/testsuite[@name='fsi']").Item(0)
+                else r
         let testCases = suite.SelectNodes("testcase") |> Seq.cast<XmlNode>
         {
             PassedTests =
