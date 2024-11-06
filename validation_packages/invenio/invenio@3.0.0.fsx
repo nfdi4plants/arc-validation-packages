@@ -29,14 +29,20 @@ ReleaseNotes: |
 ---
 *)"""
 
+
 #r "nuget: ARCExpect, 4.0.1"
+#r "nuget: ARCtrl.NET"
+
 
 open ControlledVocabulary
 open Expecto
 open ARCExpect
 open ARCTokenization
 open ARCTokenization.StructuralOntology
+open ARCtrl
+
 open System.IO
+
 
 // Input:
 let arcDir = Directory.GetCurrentDirectory()
@@ -110,11 +116,26 @@ let cases =
         }
     ]
 
+// Required Files Validation:
+let requiredFiles = 
+    ARCtrl.
+    ARC.fromFilePaths arcDir
+
+let fileValidationCases = 
+    testList "File Existence Validation" [
+        for fileName in requiredFiles do
+            ARCExpect.validationCase (TestID.Name $"File '{fileName}' exists") {
+                let filePath = Path.Combine(arcDir, fileName)
+                if not (File.Exists(filePath)) then
+                    failwithf "Required file '%s' is missing in ARC directory." fileName
+            }
+    ]
+
 // Execution:
 
 Setup.ValidationPackage(
     metadata = Setup.Metadata(PACKAGE_METADATA),
-    CriticalValidationCases = [cases]
+    CriticalValidationCases = [cases; fileValidationCases]
 )
 |> Execute.ValidationPipeline(
     basePath = arcDir
