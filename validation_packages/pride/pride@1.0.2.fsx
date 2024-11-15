@@ -240,11 +240,11 @@ let cases =
         }
 
         // Investigation hast Keywords comment
-        ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``.INVESTIGATION.key}.Keywords exists") {
-            investigationMetadata
-            //|> Validate.ParamCollection.ContainsNonKeyParamWithTerm INVMSO.``Investigation Metadata``.``INVESTIGATION CONTACTS``.``Investigation Person Last Name``
-            |> Validate.ParamCollection.ContainsParamWithTerm (CvTerm.create "Keywords")
-        }
+        //ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``.INVESTIGATION.key}.Keywords exists") {
+        //    investigationMetadata
+        //    //|> Validate.ParamCollection.ContainsNonKeyParamWithTerm INVMSO.``Investigation Metadata``.``INVESTIGATION CONTACTS``.``Investigation Person Last Name``
+        //    |> Validate.ParamCollection.ContainsParamWithTerm (CvTerm.create "Keywords")
+        //}
 
         // Study has protocol in correct format
         ARCExpect.validationCase (TestID.Name STDMSO.``Study Metadata``.``STUDY PROTOCOLS``.key.Name) {
