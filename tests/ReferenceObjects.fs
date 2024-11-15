@@ -64,3 +64,14 @@ module invenio =
 
         let validationResultNonCritical =
             ValidationResult.create(0,0,0,0)
+
+
+module pride =
+
+    module testARC_proteomicsCorrect =
+
+        let validationResultCritical =
+            ValidationResult.create(22,22,0,0)
+
+        let validationResultNonCritical =
+            ValidationResult.create(0,0,0,0)
