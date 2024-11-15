@@ -34,16 +34,16 @@ type BaseTool_Fixture(scriptName : string, version : string, arcfolder : string)
     member this.JUnitExpected = jUnitExpected
 
 
-type ArcPrototype_Fixture() =
+type testARC_proteomicsCorrect_Fixture() =
 
     inherit BaseTool_Fixture("pride", "1.0.3", "testARC_proteomicsCorrect")
 
 
-type ArcPrototype() =
+type testARC_proteomicsCorrect() =
 
-    let tool_fixture = new ArcPrototype_Fixture()
+    let tool_fixture = new testARC_proteomicsCorrect_Fixture()
 
-    interface IClassFixture<ArcPrototype_Fixture>
+    interface IClassFixture<testARC_proteomicsCorrect_Fixture>
 
     member this.Fixture with get() = tool_fixture
 
