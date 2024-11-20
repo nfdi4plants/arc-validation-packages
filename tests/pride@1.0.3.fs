@@ -1,4 +1,4 @@
-﻿module pride
+﻿module pride_1_0_3
 
 
 open ValidationPackages.Tests
@@ -53,8 +53,8 @@ type testARC_proteomicsCorrect() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.pride.testARC_proteomicsCorrect.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.pride.testARC_proteomicsCorrect.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.pride.``1_0_3``.testARC_proteomicsCorrect.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.pride.``1_0_3``.testARC_proteomicsCorrect.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
