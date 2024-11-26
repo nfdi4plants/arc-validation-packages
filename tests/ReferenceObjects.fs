@@ -86,7 +86,7 @@ module pride =
         module testARC_proteomicsCorrect =
 
             let validationResultCritical =
-                ValidationResult.create(22,22,0,0)
+                ValidationResult.create(23,23,0,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -95,7 +95,7 @@ module pride =
         module testARC_proteomicsModifValueMissing =
 
             let validationResultCritical =
-                ValidationResult.create(22,21,1,0)
+                ValidationResult.create(23,22,1,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
