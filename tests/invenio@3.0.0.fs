@@ -1,4 +1,4 @@
-﻿module invenio
+﻿module invenio_3_0_0
 
 
 open ValidationPackages.Tests
@@ -75,8 +75,8 @@ type ArcPrototype() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.ArcPrototype.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.ArcPrototype.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.ArcPrototype.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
@@ -102,8 +102,8 @@ type testARC_empty() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.testARC_empty.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_empty.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_empty.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
@@ -129,8 +129,8 @@ type testARC_emptyContactsColumn() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.testARC_emptyContactsColumn.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_emptyContactsColumn.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_emptyContactsColumn.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
@@ -156,8 +156,8 @@ type testARC_shiftedContactsCells() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedContactsCells.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_shiftedContactsCells.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_shiftedContactsCells.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
@@ -183,8 +183,8 @@ type testARC_shiftedTitleCell() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.testARC_shiftedTitleCell.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_shiftedTitleCell.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_shiftedTitleCell.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
@@ -210,8 +210,8 @@ type testARC_wrongEmail() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.invenio.testARC_wrongEmail.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_wrongEmail.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.invenio.``3_0_0``.testARC_wrongEmail.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
