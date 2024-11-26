@@ -23,5 +23,6 @@
         <testcase name="[ Critical; ASSAY; instrument model ]" time="0.000" />
         <testcase name="[ Critical; ASSAY; instrument model terms ]" time="0.000" />
         <testcase name="[ Critical; ASSAY; modification ]" time="0.000" />
+        <testcase name="[ Critical; ASSAY; modification values ]" time="0.000" />
     </testsuite>
 </testsuites>
