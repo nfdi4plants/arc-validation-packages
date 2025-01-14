@@ -1,6 +1,6 @@
 # ValidationPackages
 
-ARC validation packages for avpr.nfdi4plants.org maintained by DataPLANT
+ARC validation packages for avpr.nfdi4plants.org maintained by DataPLANT. The reason for this repo is to have a properly structured and unit tested space for the packages that the DataPLANT team members maintain themselves.
 
 Validation packages are executed in appropriate ARC fixtures placed in `tests/fixtures`.
 
