@@ -43,8 +43,7 @@ open System.IO
 
 
 // Input:
-//let arcDir = Directory.GetCurrentDirectory()
-let arcDir = @"C:\Repos\nfdi4plants\arc-validation-packages\tests\fixtures\testARC_proteomicsCorrect"
+let arcDir = Directory.GetCurrentDirectory()
 
 
 // Values:
