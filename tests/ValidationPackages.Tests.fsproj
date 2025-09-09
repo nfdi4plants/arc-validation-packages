@@ -16,6 +16,7 @@
     <Compile Include="TestObjects.fs" />
     <Compile Include="GitSubmodulesTests.fs" />
     <Compile Include="invenio%403.0.0.fs" />
+    <Compile Include="invenio%403.0.1.fs" />
     <Compile Include="pride%401.0.3.fs" />
     <Compile Include="pride%401.0.4.fs" />
     <Compile Include="Program.fs" />
