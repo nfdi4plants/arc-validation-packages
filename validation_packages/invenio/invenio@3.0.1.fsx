@@ -9,7 +9,7 @@ Description: |
   - All persons in Investigation Contacts must have a name, last name, affiliation and valid email
 MajorVersion: 3
 MinorVersion: 0
-PatchVersion: 0
+PatchVersion: 1
 Publish: true
 Authors:
   - FullName: Oliver Maus
@@ -30,7 +30,6 @@ ReleaseNotes: |
 *)"""
 
 #r "nuget: ARCExpect, 4.0.1"
-//#r "nuget: FSharpAux"
 
 open ControlledVocabulary
 open Expecto
@@ -38,11 +37,9 @@ open ARCExpect
 open ARCTokenization
 open ARCTokenization.StructuralOntology
 open System.IO
-//open FSharpAux
 
 // Input:
-//let arcDir = Directory.GetCurrentDirectory()
-let arcDir = @"C:\Users\olive\OneDrive\CSB-Stuff\NFDI\testARC37"
+let arcDir = Directory.GetCurrentDirectory()
 
 // Values:
 let absoluteDirectoryPaths = FileSystem.parseARCFileSystem arcDir
