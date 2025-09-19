@@ -25,7 +25,7 @@ Tags:
   - Name: ARC
   - Name: data publication
 ReleaseNotes: |
-  - Fix package passing validation against Investigation file containing only section keys
+  - Fix package passing validation against Investigation file when Emails are not sufficiently tested
 ---
 *)"""
 
