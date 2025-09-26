@@ -30,7 +30,7 @@ ReleaseNotes: |
 ---
 *)"""
 
-#r "nuget: ARCExpect, 4.0.1"
+#r "nuget: ARCExpect, 5.0.1"
 
 open ControlledVocabulary
 open Expecto
