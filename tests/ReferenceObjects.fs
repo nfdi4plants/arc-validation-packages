@@ -124,6 +124,71 @@ module invenio =
                 ValidationResult.create(0,0,0,0)
 
 
+    module ``3_0_2`` =
+
+        module ArcPrototype =
+
+            let validationResultCritical =
+                ValidationResult.create(12,11,1,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_empty =
+
+            let validationResultCritical =
+                ValidationResult.create(12,5,7,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_emptyContactsColumn =
+
+            let validationResultCritical =
+                ValidationResult.create(12,7,5,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_shiftedContactsCells =
+
+            let validationResultCritical =
+                ValidationResult.create(12,7,5,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_shiftedTitleCell =
+
+            let validationResultCritical =
+                ValidationResult.create(12,11,1,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_wrongEmail =
+
+            let validationResultCritical =
+                ValidationResult.create(12,10,2,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_correctOrcid =
+
+            let validationResultCritical =
+                ValidationResult.create(12,12,0,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
 module pride =
 
     module ``1_0_3`` =
