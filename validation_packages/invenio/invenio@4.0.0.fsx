@@ -95,6 +95,14 @@ let studyProcessGraphTokens =
     with
         | _ -> List.empty
 
+let studyDataTokens =
+    studyProcessGraphTokens
+    |> List.filter (
+        fun ipL ->
+            try Param.getValue ipL.Head = "Data"
+            with _ -> false
+    )
+
 let assayProcessGraphTokens =
     try 
         absoluteDirectoryPaths
@@ -104,16 +112,24 @@ let assayProcessGraphTokens =
     with
         | _ -> List.empty
 
-let dataTokens =
-    studyProcessGraphTokens @ assayProcessGraphTokens
+let assayDataTokens =
+    assayProcessGraphTokens
     |> List.filter (
         fun ipL ->
             try 
                 ipL.Head 
-                |> Param.getCvName 
-                |> (=) "Data node"
-            with _ -> false
+                |> Param.getValue 
+                |> (=) "Data"
+            with _ -> 
+                false
     )
+
+
+
+// Helper functions:    (put into ARCExpect)
+
+let ValueDataPathAnnotationIsPresent (param : #IParam) =
+
 
 
 // Validation Cases:
@@ -185,7 +201,31 @@ let cases =
             |> Seq.filter (Param.getValueAsString >> (<>) "Metadata Section Key")
             |> Seq.iter (Validate.Param.ValueMatchesRegex StringValidationPattern.orcid)
         }
+        // Study datamap annotations are present inside the ARC
+        ARCExpect.validationCase (TestID.Name "Datamap annotations are present") {
+            studyDataTokens
+            |> Seq.iter (
+                fun dtL -> ()
+            )
+            assayDataTokens
+            |> Seq.iter (
+                fun dtL ->
+                    Seq.skip 1 dtL      // skip column header
+                    |> Param.getValueAsString
+            )
+        }
     ]
+
+absoluteDirectoryPaths |> Seq.toList
+
+assayDataTokens
+|> Seq.iter (
+    fun dtL ->
+        Seq.skip 1 dtL      // skip column header
+        |> Param.getValueAsString
+)
+
+assayDataTokens.Head |> List.skip 1 
 
 // Execution:
 
