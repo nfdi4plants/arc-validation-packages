@@ -41,7 +41,6 @@ open System.IO
 
 // Input:
 let arcDir = Directory.GetCurrentDirectory()
-let arcDir = @"C:\Users\revil\OneDrive\CSB-Stuff\NFDI\testARC38"
 
 // Values:
 let absoluteDirectoryPaths = FileSystem.parseARCFileSystem arcDir
