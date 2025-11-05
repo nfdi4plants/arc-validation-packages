@@ -63,7 +63,7 @@ type testARC_proteomicsCorrect() =
 
 type testARC_proteomicsModifValueMissing_Fixture() =
 
-    inherit BaseTool_Fixture("pride", "1.0.4", "testARC_proteomicsCorrect")
+    inherit BaseTool_Fixture("pride", "1.0.4", "testARC_proteomicsModifValueMissing")
 
 
 type testARC_proteomicsModifValueMissing() =
@@ -80,8 +80,8 @@ type testARC_proteomicsModifValueMissing() =
 
     [<Fact>]
     member this.``validation_summary JSON is equal`` () =
-        Assert.Equal(ReferenceObjects.pride.``1_0_4``.testARC_proteomicsCorrect.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
-        Assert.Equal(ReferenceObjects.pride.``1_0_4``.testARC_proteomicsCorrect.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
+        Assert.Equal(ReferenceObjects.pride.``1_0_4``.testARC_proteomicsModifValueMissing.validationResultCritical, this.Fixture.ArcExpectValidationResult.Critical)
+        Assert.Equal(ReferenceObjects.pride.``1_0_4``.testARC_proteomicsModifValueMissing.validationResultNonCritical, this.Fixture.ArcExpectValidationResult.NonCritical)
 
     [<Fact>]
     member this.``validation_report XML is equal`` () =
