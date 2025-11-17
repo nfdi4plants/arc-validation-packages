@@ -45,6 +45,7 @@ open System.IO
 
 // Input:
 let arcDir = Directory.GetCurrentDirectory()
+//let arcDir = @"C:\Repos\nfdi4plants\arc-validation-packages\tests\fixtures\testARC_proteomicsAlternativeTerms"
 
 
 // Values:
@@ -93,9 +94,11 @@ let tissueTokens =
     |> List.tryFind (
         fun cvpList -> 
             Param.getValueAsTerm cvpList.Head = (CvTerm.create("NCIT:C12801","Tissue","NCIT")) ||
-            Param.getValueAsTerm cvpList.Head = (CvTerm.create("DPBO:0000112","tissue","DBPO"))
+            Param.getValueAsTerm cvpList.Head = (CvTerm.create("DBPO:0000112","tissue","DBPO"))
     )
     |> Option.defaultValue []
+
+studyProcessGraphTokens |> List.map List.head
 
 let instrumentTokens =
     assayProcessGraphTokens
@@ -106,9 +109,9 @@ let modTokens =
     assayProcessGraphTokens
     |> List.filter (
         fun cvpList -> 
-            cvpList.Head |> Param.getValueAsTerm = (CvTerm.create("MS:1003021","Fixed modification","MS")) ||
-            cvpList.Head |> Param.getValueAsTerm = (CvTerm.create("MS:1003022","Variable modification","MS")) ||
-            cvpList.Head |> Param.getValueAsTerm = (CvTerm.create("MOD:00000","protein modification","MOD"))
+            Param.getValueAsTerm cvpList.Head = (CvTerm.create("MS:1003021","Fixed modification","MS")) ||
+            Param.getValueAsTerm cvpList.Head = (CvTerm.create("MS:1003022","Variable modification","MS")) ||
+            Param.getValueAsTerm cvpList.Head = (CvTerm.create("MOD:00000","protein modification","MOD"))
     )
     |> List.concat
 
@@ -277,7 +280,7 @@ let studyCases =
                     |> List.exists (
                         fun iparam -> 
                             iparam.Value = ParamValue.CvValue (CvTerm.create("NCIT:C12801","Tissue","NCIT")) ||
-                            iparam.Value = ParamValue.CvValue (CvTerm.create("DPBO:0000112","tissue","DBPO"))
+                            iparam.Value = ParamValue.CvValue (CvTerm.create("DBPO:0000112","tissue","DBPO"))
                     )
             )
         }
