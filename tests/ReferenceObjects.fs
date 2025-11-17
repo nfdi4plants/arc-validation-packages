@@ -220,3 +220,32 @@ module pride =
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
+
+
+    module ``1_0_5`` =
+
+        module testARC_proteomicsCorrect =
+
+            let validationResultCritical =
+                ValidationResult.create(23,23,0,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_proteomicsModifValueMissing =
+
+            let validationResultCritical =
+                ValidationResult.create(23,22,1,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
+
+
+        module testARC_proteomicsAlternativeTerms =
+
+            let validationResultCritical =
+                ValidationResult.create(23,23,0,0)
+
+            let validationResultNonCritical =
+                ValidationResult.create(0,0,0,0)
