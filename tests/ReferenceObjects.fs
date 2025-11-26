@@ -7,7 +7,7 @@ open ARCExpect
 [<AutoOpen>]
 module General =
 
-    let expected_prototype_commit_hash = "2635598d9ea365c7ce545a9f279cca39af3de5df"
+    let expected_prototype_commit_hash = "7eeb05fd77292550568c0720d0631c3e64f46abf"
 
 
 module invenio =
