@@ -1,6 +1,5 @@
 ﻿namespace ValidationPackages.Tests.ReferenceObjects
 
-open System.IO
 open ARCExpect
 
 
@@ -194,7 +193,7 @@ module invenio =
         module ArcPrototype =
 
             let validationResultCritical =
-                ValidationResult.create(13,12,1,0)
+                ValidationResult.create(17,15,2,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -203,7 +202,7 @@ module invenio =
         module testARC_empty =
 
             let validationResultCritical =
-                ValidationResult.create(13,6,7,0)
+                ValidationResult.create(17,10,7,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -212,7 +211,7 @@ module invenio =
         module testARC_emptyContactsColumn =
 
             let validationResultCritical =
-                ValidationResult.create(13,8,5,0)
+                ValidationResult.create(17,11,6,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -221,7 +220,7 @@ module invenio =
         module testARC_shiftedContactsCells =
 
             let validationResultCritical =
-                ValidationResult.create(13,8,5,0)
+                ValidationResult.create(17,11,6,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -230,7 +229,7 @@ module invenio =
         module testARC_shiftedTitleCell =
 
             let validationResultCritical =
-                ValidationResult.create(13,12,1,0)
+                ValidationResult.create(17,15,2,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -239,7 +238,7 @@ module invenio =
         module testARC_wrongEmail =
 
             let validationResultCritical =
-                ValidationResult.create(13,11,2,0)
+                ValidationResult.create(17,15,2,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -248,7 +247,7 @@ module invenio =
         module testARC_correctOrcid =
 
             let validationResultCritical =
-                ValidationResult.create(13,13,0,0)
+                ValidationResult.create(17,17,0,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
@@ -257,7 +256,7 @@ module invenio =
         module testARC_licenseMissing =
 
             let validationResultCritical =
-                ValidationResult.create(13,12,1,0)
+                ValidationResult.create(17,16,1,0)
 
             let validationResultNonCritical =
                 ValidationResult.create(0,0,0,0)
