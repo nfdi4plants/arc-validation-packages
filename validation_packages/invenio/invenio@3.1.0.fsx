@@ -41,6 +41,7 @@ open System.IO
 
 // Input:
 let arcDir = Directory.GetCurrentDirectory()
+//let arcDir = @"C:\Repos\nfdi4plants\arc-validation-packages\tests\fixtures\ArcPrototype\"
 
 // Values:
 let absoluteDirectoryPaths = FileSystem.parseARCFileSystem arcDir
@@ -87,16 +88,28 @@ let investigationMetadata =
 let cases = 
     testList INVMSO.``Investigation Metadata``.INVESTIGATION.key.Name [
         // Investigation has title
-        ARCExpect.validationCase (TestID.Name INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``.Name) {
+        ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``.Name} exists") {
             investigationMetadata
             |> Validate.ParamCollection.ContainsNonKeyParamWithTerm
                 INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``
         }
+        // Investigation title is not empty
+        ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``.Name} is not empty") {
+            investigationMetadata
+            |> Seq.filter (Param.getTerm >> (=) INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Title``)
+            |> Seq.iter Validate.Param.ValueIsNotEmpty
+        }
         // Investigation has description
-        ARCExpect.validationCase (TestID.Name INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Description``.Name) {
+        ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Description``.Name} exists") {
             investigationMetadata
             |> Validate.ParamCollection.ContainsNonKeyParamWithTerm
                 INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Description``
+        }
+        // Investigation description is not empty
+        ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Description``.Name} is not empty") {
+            investigationMetadata
+            |> Seq.filter (Param.getTerm >> (=) INVMSO.``Investigation Metadata``.INVESTIGATION.``Investigation Description``)
+            |> Seq.iter Validate.Param.ValueIsNotEmpty
         }
         // Investigation has contacts with name, last name, affiliation and email
         // Investigation Person First Name
@@ -135,6 +148,11 @@ let cases =
         investigationMetadata
         |> Validate.ParamCollection.ContainsNonKeyParamWithTerm INVMSO.``Investigation Metadata``.``INVESTIGATION CONTACTS``.``Investigation Person Email``
         }
+        ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``. ``INVESTIGATION CONTACTS``.``Investigation Person Email``.Name} is not empty") {
+            investigationMetadata
+            |> Seq.filter (Param.getTerm >> (=) INVMSO.``Investigation Metadata``. ``INVESTIGATION CONTACTS``.``Investigation Person Email``)
+            |> Seq.iter Validate.Param.ValueIsNotEmpty
+        }
         ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``. ``INVESTIGATION CONTACTS``.``Investigation Person Email``.Name} is valid") {
             investigationMetadata
             |> Seq.filter (Param.getTerm >> (=) INVMSO.``Investigation Metadata``.``INVESTIGATION CONTACTS``.``Investigation Person Email``)
@@ -145,6 +163,11 @@ let cases =
         ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``.``INVESTIGATION CONTACTS``.``Comment[ORCID]``.Name} exists") {
             investigationMetadata
             |> Validate.ParamCollection.ContainsNonKeyParamWithTerm INVMSO.``Investigation Metadata``.``INVESTIGATION CONTACTS``.``Comment[ORCID]``
+        }
+        ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``. ``INVESTIGATION CONTACTS``.``Comment[ORCID]``.Name} is not empty") {
+            investigationMetadata
+            |> Seq.filter (Param.getTerm >> (=) INVMSO.``Investigation Metadata``. ``INVESTIGATION CONTACTS``.``Comment[ORCID]``)
+            |> Seq.iter Validate.Param.ValueIsNotEmpty
         }
         ARCExpect.validationCase (TestID.Name $"{INVMSO.``Investigation Metadata``. ``INVESTIGATION CONTACTS``.``Comment[ORCID]``.Name} is valid") {
             investigationMetadata
