@@ -27,6 +27,7 @@ Tags:
   - Name: data publication
 ReleaseNotes: |
   - Add check for License file
+  - Add more validation cases for presence of text in fields
 ---
 *)"""
 
@@ -41,7 +42,6 @@ open System.IO
 
 // Input:
 let arcDir = Directory.GetCurrentDirectory()
-//let arcDir = @"C:\Repos\nfdi4plants\arc-validation-packages\tests\fixtures\ArcPrototype\"
 
 // Values:
 let absoluteDirectoryPaths = FileSystem.parseARCFileSystem arcDir
